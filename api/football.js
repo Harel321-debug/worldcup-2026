@@ -6,8 +6,10 @@ export default async function handler(req, res) {
   if (!endpoint) return res.status(400).json({ error: "חסר endpoint" });
 
   try {
-    const response = await fetch(`https://v3.football.api-sports.io${endpoint}`, {
-      headers: { "x-apisports-key": process.env.FOOTBALL_API_KEY }
+    const response = await fetch(`https://api.sofascore.com/api/v1${endpoint}`, {
+      headers: { 
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      }
     });
 
     const text = await response.text();
